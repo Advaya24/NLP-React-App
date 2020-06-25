@@ -1,14 +1,17 @@
 import * as ActionTypes from './ActionTypes';
+import { baseUrl } from '../shared/baseUrl'
 
 export const postAnalogyInput = (formInput) => dispatch => {
     const input = formInput;
 
-    return fetch(`/api/analogy`, {
+    return fetch(`https://cors-anywhere.herokuapp.com/` + baseUrl + `/api/analogy`, {
         method: 'POST',
+        mode: 'cors',
         body: JSON.stringify(input),
         headers: {
             'Content-Type': 'application/json',
-            "accepts": "application/json"
+            "accepts": "application/json",
+            "Access-Control-Allow-Origin": '*'
         },
     })
         .then(response => {
@@ -39,12 +42,14 @@ export const addResult = (result) => ({
 export const postInputSentence = (formInput) => dispatch => {
     const input = formInput;
 
-    return fetch(`/api/ASL`, {
+    return fetch(`https://cors-anywhere.herokuapp.com/` + baseUrl + `/api/ASL`, {
         method: 'POST',
+        mode: 'cors',
         body: JSON.stringify(input),
         headers: {
             'Content-Type': 'application/json',
-            "accepts": "application/json"
+            "accepts": "application/json",
+            "Access-Control-Allow-Origin": '*'
         },
     })
         .then(response => {
